@@ -1,0 +1,246 @@
+// Header
+nav.main-header.navbar.navbar-expand-md
+	.container
+		.navbar-left.navbar-collapse.collapse.w-100.order-1.order-md-0.dual-collapse2
+			a.navbar-brand
+				a.nav-link(href='#')
+					img(src='../../assets/header/piq-brand-logo.svg', alt='PIQ Brand Logo')
+		|
+		.navbar-center.mx-auto.order-0
+			a.navbar-brand.mx-auto(href='#') 
+				img(src='../../assets/header/piq-logo.png', alt='PIQ Logo')
+		|
+		.navbar-right.navbar-collapse.collapse.w-100.order-3.dual-collapse2
+			ul.navbar-nav.ml-auto
+				li.nav-item
+					a.nav-link(href='#')
+						| John Smith
+						img(src='../../assets/shared/avatar.png', alt='User avatar')
+|
+// Body
+.main-body
+	.container
+		.row
+			// Left sidebar
+			.col-md-3.dashboard-left
+				// Sidebar Building
+				.card.card-item.sidebar-building
+					.card-body
+						.sb-top
+							img(src="../../assets/aside/building-preview.png", alt="Building Preview")
+						.sb-bottom.mt-3.text-center
+							p.sb-name.m-0.font-weight-bold Hornsby Building
+							p.sb-address.m-0.text-black-50 Jersey Lane, Hornsby NSW, 2077
+				|
+				// Sidebar Menus
+				.list-group.sidebar-menus
+					a.list-group-item.list-group-item-action.active(href='#') 
+						img.mr-3(src="../../assets/icons/newsfeed-icon.svg", alt="Newsfeed")
+						| Newsfeed
+					a.list-group-item.list-group-item-action(href='#')
+						img.mr-3(src="../../assets/icons/financial-icon.svg", alt="Financial")
+						| Financial
+					a.list-group-item.list-group-item-action(href='#')
+						img.mr-3(src="../../assets/icons/levies-icon.svg", alt="Levies")
+						| Levies
+					a.list-group-item.list-group-item-action.disabled(href='#')
+						img.mr-3(src="../../assets/icons/open-items-icon.svg", alt="Open Items")
+						| Open Items
+					a.list-group-item.list-group-item-action.disabled(href='#')
+						img.mr-3(src="../../assets/icons/manager-info-icon.svg", alt="Manager Info")
+						| Manager Info
+					a.list-group-item.list-group-item-action.disabled(href='#')
+						img.mr-3(src="../../assets/icons/calendar-icon.svg", alt="Calendar")
+						| Calendar
+					a.list-group-item.list-group-item-action.disabled(href='#')
+						img.mr-3(src="../../assets/icons/faqs-icon.svg", alt="Bylaws/FAQs")
+						| Bylaws / FAQs
+			|
+			// Center body
+			.col-md-5.dashboard-center
+				// Dashboard Building Preview
+				.card.card-item.dashboard-building-preview
+					img.card-img-top(src='../../assets/dashboard/main-building-preview.jpg', alt='Main Building Preview')
+					.card-body
+						.dbp-content
+							h5.dbp-name.m-0 Hornsby Building
+							p.dbp-address.m-0.text-black-50
+								img.mr-1(src="../../assets/icons/location-icon.svg", alt="Building address")
+								| Jersey Lane, Hornsby NSW. 2077
+						.dbp-add-post-block.px-1
+							button.dbp-add-post
+								img(src="../../assets/icons/edit-post-icon.svg", alt="Add/Edit post")
+						
+				|
+				// Levy Balance
+				.card.card-item.levy-balance
+					.card-body
+						.lb-top.p-4.mb-3
+							.lbt-left
+								img.mr-2(src="../../assets/icons/levy-balance-icon.svg", alt="Levy balance")
+								p.m-0.font-weight-bold Levy Balance
+							.lbt-right.text-right
+								h4.m-0 $ 18,250.00 DR
+						.lb-bottom
+							a.lbb-items.card-link.pt-3.pb-1(href="")
+								img.mr-2(src="../../assets/icons/view-icon.svg", alt="View statements")
+								p.m-0 View Statements
+							a.lbb-items.card-link.pt-3.pb-1(href="")
+								img.mr-2(src="../../assets/icons/pay-now-icon.svg", alt="Pay now")
+								p.m-0 Pay Now
+							a.lbb-items.card-link.pt-3.pb-1(href="")
+								img.mr-2(src="../../assets/icons/levy-history-icon.svg", alt="Levy history")
+								p.m-0 Levy History
+				|
+				// Open item
+				.card.card-item.open-item
+					.card-body
+						.oi-block.oi-left.mr-3
+							.oib-img
+								img(src="../../assets/icons/open-updated.svg", alt="Open item updated")
+						.oi-block.oi-center
+							.oib-block.p-3.text-center
+								h6.m-0 Open item updated
+						.oi-block.oi-right.ml-3
+							a(href="")
+								img(src="../../assets/icons/right-arrow-icon.svg", alt="View item updated")
+				|
+				// Owner Post
+				.card.card-item.owner-post
+					.card-body
+						.op-header.mb-3
+							.oph-img
+								img(src="../../assets/icons/user-icon.svg", alt="User icon")
+							.oph-center.px-3
+								.ophc-top
+									a.ophc-name.card-link.m-0.mr-2(href="")
+										strong Jake Smith
+									p.m-0.text-black-50.font-weight-bold Owner
+								.ophc-bottom
+									p.m-0.text-black-50 2 hrs
+							.oph-pinned
+								a(href="")
+									img(src="../../assets/icons/pinned-icon.svg", alt="Pinned post")
+						.op-body.py-2
+							p.m-0.text-justify Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh orci, finibus eget rutrum eu, imperdiet et urna. Duis pulvinar eros eget blandit vulputate. Nullam mattis urna lacus. Morbi vitae sodales nibh. Morbi in blandit est. Suspendisse in libero ipsum. Donec dui urna, condimentum a augue a, dictum egestas metus.
+					.card-footer
+						.op-comment
+							.opc-img.mr-2
+								img(src="../../assets/shared/avatar.png", alt="User avatar")
+							.opc-input-block
+								.input-group
+									input.form-control(type='text', placeholder="Write a comment..", aria-label="Recipient's username", aria-describedby='button-addon2')
+									.input-group-append
+										button#button-addon2.btn.btn-outline-secondary(type='button')
+											img(src="../../assets/icons/upload-image-icon.svg", alt="Upload image")
+				|
+				// Upcoming Events
+				.card.card-item.upcoming-events
+					.card-body
+						.ue-header.mb-3
+							.ueh-img.mr-3
+								img(src="../../assets/icons/upcoming-meetings-icon.svg", alt="Upcoming meeting")
+							.ueh-block.pl-4.pr-3.py-3
+								h6.m-0 Upcoming meeting
+								a(href='')
+									img(src="../../assets/icons/right-arrow-icon.svg", alt="View upcoming meeting")
+						.ue-details.pb-2
+							h5 Committee meeting
+							.ued-info
+								img.mr-2(src="../../assets/icons/clock-icon.svg", alt="Meeting date and time")
+								p.m-0.text-black-50 14 Jul · 2:45 pm to 3:45 pm
+							.ued-info
+								img.mr-2(src="../../assets/icons/location-icon.svg", alt="Meeting location")
+								p.m-0.text-black-50 St Leonards, NSW
+				|
+				// Owner Post
+				.card.card-item.owner-post
+					.card-body
+						.op-header.mb-3
+							.oph-img
+								img(src="../../assets/icons/user-icon.svg", alt="User icon")
+							.oph-center.px-3
+								.ophc-top
+									a.ophc-name.card-link.m-0.mr-2(href="")
+										strong Maddy O'Brien
+									p.m-0.text-black-50.font-weight-bold Owner
+								.ophc-bottom
+									p.m-0.text-black-50 5 hrs
+							.oph-pinned
+								a(href="")
+									img(src="../../assets/icons/pinned-icon.svg", alt="Pinned post")
+						.op-body.py-2
+							p.m-0.text-justify Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh orci, finibus eget rutrum eu, imperdiet et urna. Duis pulvinar eros eget blandit vulputate. Nullam mattis urna lacus. Morbi vitae sodales nibh. Morbi in blandit est. Suspendisse in libero ipsum. Donec dui urna, condimentum a augue a, dictum egestas metus.
+					.card-footer
+						.op-comment
+							.opc-img.mr-2
+								img(src="../../assets/shared/avatar.png", alt="User avatar")
+							.opc-input-block
+								.input-group
+									input.form-control(type='text', placeholder="Write a comment..", aria-label="Recipient's username", aria-describedby='button-addon2')
+									.input-group-append
+										button#button-addon2.btn.btn-outline-secondary(type='button')
+											img(src="../../assets/icons/upload-image-icon.svg", alt="Upload image")
+				|
+			|
+			// Right sidebar
+			.col-md-4.dashboard-right
+				// Sidebar Financial Statement
+				.card.card-item.sidebar-financial-statement
+					.card-header
+						img.mr-3(src="../../assets/icons/financial-statement-icon.svg", alt="Financial statement")
+						h6.card-title.text-center.my-2.text-light Financial Statement
+					.card-body
+						.sfs-graph.mb-2
+							img.w-100(src="../../assets/dashboard/graph.png", alt="Graph")
+						.sfs-details.pb-3
+							.sfsd-circle.mr-2
+							.sfsd-ellipse
+						.sfs-more.text-center.pt-3
+							a.sfsm-more.card-link(href="")
+								img.mr-2(src="../../assets/icons/view-icon.svg", alt="Show more")
+								| Show more
+				|
+				// Sidebar Building Details
+				.card.card-item.sidebar-building-details
+					.card-body
+						.sbd-owner.pb-2
+							.sbdo-image.mr-2
+								img.mr-2(src="../../assets/dashboard/building-owner.png", alt="Building owner")
+							.sbdo-details.px-2
+								h6.sbdod-name.card-text.m-0.font-weight-bold Melissa Brown
+								p.sbdod-position.card-text.m-0 Manager
+						.sbd-info.mt-4.pb-3
+							.sbdi-items
+								.sbdii-label.mr-2
+									img.mr-2(src="../../assets/icons/building-icon.svg", alt="Company name")
+									p Company
+								.sbdii-value
+									p.text-black-50 BC4U Management Pty LTD
+							|
+							.sbdi-items
+								.sbdii-label.mr-2
+									img.mr-2(src="../../assets/icons/location-icon.svg", alt="Company address")
+									p Address
+								.sbdii-value
+									p.text-black-50 PO Box 3348, South Brisbane BC QLD - 4101
+							|
+							.sbdi-items
+								.sbdii-label.mr-2
+									img.mr-2(src="../../assets/icons/phone-icon.svg", alt="Company contact")
+									p Phone
+								.sbdii-value
+									p.text-black-50 07 3800 2425
+							|
+							.sbdi-items
+								.sbdii-label.mr-2
+									img.mr-2(src="../../assets/icons/paperclip-icon.svg", alt="Company website")
+									p Website
+								.sbdii-value
+									p.text-black-50 www.bc4u.com.au
+							|
+						.sbd-more.text-center.pt-3
+							a.card-link(href='#')
+								img.mr-2(src="../../assets/icons/paper-plane-icon.svg", alt="Contact")
+								| Contact
+				|
