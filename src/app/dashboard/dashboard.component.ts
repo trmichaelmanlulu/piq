@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  showMyBuildings: boolean = false;
 
   ngOnInit() {
+  }
+
+  toggleMyBuildings() {
+    this.showMyBuildings = !this.showMyBuildings;
   }
 
 }

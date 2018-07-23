@@ -21,10 +21,23 @@ input:hover {
     box-shadow: none !important;
 }
 
-// Color variables
+// Variables
 $green: #41bb71;
 $dark-gray: #575757;
 $darker-gray: rgb(66, 66, 66);
+
+// Mixins
+@mixin hoverSvg() {
+    svg path,
+    svg g,
+    svg polygon,
+    svg rect,
+    svg polyline,
+    svg line {
+        stroke: $green;
+        transition: all 100ms ease-in-out;
+    }
+}
 
 // Global
 body {
@@ -36,6 +49,9 @@ a {
 h1,h2,h3,h4,h5,h6,
 .font-weight-bold {
     color: $dark-gray !important;
+}
+button:hover {
+    @include hoverSvg();
 }
 
 // Body
@@ -51,7 +67,8 @@ h1,h2,h3,h4,h5,h6,
             color: $dark-gray;
 
             &:hover {
-                color: $darker-gray;
+                color: $green;
+                @include hoverSvg();
             }
         }
     }

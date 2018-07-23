@@ -1,9 +1,26 @@
-// Color variables
-$green: rgba(65, 187, 114, 1);
+// Variables
+$green: #41bb72;
 $dark-green: #269452;
 $light-gray: #eaeaea;
 $dark-gray: #575757;
 $bg-gray: #f5f5f5;
+
+// Reset
+@mixin resetButtons($bgColor) {
+    background: $bgColor;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+// Base
+%avatar-img {
+    padding: 10px;
+    background: $bg-gray;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+}
 
 
 // Header
@@ -12,8 +29,56 @@ $bg-gray: #f5f5f5;
 
     .nav-link {
         padding: 0 1rem;
-    }
-    .navbar-left {
+        position: relative;
+
+        .my-buildings {
+            border: none;
+            border-radius: 5px;
+            padding: 1.5rem 1.25rem;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.349019607843137);
+            max-width: 350px;
+
+            h5 {
+                color: $green !important;
+                border-bottom: 1px solid $light-gray;
+            }
+            .mb-items {
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: space-between;
+                border-radius: 4px;
+                padding: 0.5rem;
+
+                &:hover {
+                    background: #f1f1f1;
+                }
+
+                .mbi-img {
+                    img {
+                        background: $bg-gray;
+                        border-radius: 50%;
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+                .mbi-details {
+                    width: 225px;
+                    word-break: break-word;
+                    white-space: normal;
+
+                    p {
+                        display: flex;
+                        flex-flow: row wrap;
+                        background: transparent;
+
+                        &.mbid-address {
+                            font-size: 0.9rem;
+                        }
+                    }
+                }
+
+            }
+        }
     }
     .navbar-center {
         img {
@@ -36,8 +101,14 @@ $bg-gray: #f5f5f5;
 .main-body {
     .container {
         .dashboard-left {
+            -ms-flex: 0 0 24%;
+            flex: 0 0 24%;
+            max-width: 24%;
+
             // Sidebar Building
             .sidebar-building {
+                overflow: hidden;
+
                 .card-body::before {
                     content: '';
                     position: absolute;
@@ -55,7 +126,7 @@ $bg-gray: #f5f5f5;
                     align-items: flex-start;
 
                     img {
-                        width: 40%;
+                        width: 38%;
                         border-radius: 50%;
                         border: 4px solid #fff;
                     }
@@ -73,6 +144,15 @@ $bg-gray: #f5f5f5;
                     border-radius: 4px;
                     border: none;
                     color: #555;
+                    padding: 0.65rem;
+
+                    &.active {
+                        font-weight: bold;
+                        background: #fafafa;
+                        border-left: 1px solid $green;
+                        border-radius: 0 4px 4px 0;
+                        box-shadow: 0 1px 2px rgba(167, 167, 167, 0.1);
+                    }
 
                     &:hover {
                         background: #f9f9f9;
@@ -81,9 +161,9 @@ $bg-gray: #f5f5f5;
             }
         }
         .dashboard-center {
-            -ms-flex: 0 0 43.66666667%;
-            flex: 0 0 43.66666667%;
-            max-width: 43.66666667%;
+            -ms-flex: 0 0 45.66666667%;
+            flex: 0 0 45.66666667%;
+            max-width: 45.66666667%;
 
             // Dashboard Building Preview
             .dashboard-building-preview {
@@ -99,9 +179,14 @@ $bg-gray: #f5f5f5;
                         align-items: center;
 
                         button.dbp-add-post {
-                            outline: none;
-                            border: none;
-                            cursor: pointer;
+                            @include resetButtons(transparent);
+
+                            &:hover {
+                                svg g,
+                                svg polygon {
+                                    stroke: $green;
+                                }
+                            }
                         }
                     }
                 }
@@ -153,11 +238,7 @@ $bg-gray: #f5f5f5;
 
                     .oi-left {
                         .oib-img {
-                            padding: 10px;
-                            background: $bg-gray;
-                            border-radius: 50%;
-                            width: 45px;
-                            height: 45px;
+                            @extend %avatar-img;
                             border: 1px solid $green;
 
                             img {
@@ -187,11 +268,7 @@ $bg-gray: #f5f5f5;
                     display: flex;
 
                     .oph-img {
-                        padding: 10px;
-                        background: #f5f5f5;
-                        border-radius: 50%;
-                        width: 45px;
-                        height: 45px;
+                        @extend %avatar-img;
                         border: 1px solid #41bb72;
 
                         img {
@@ -230,9 +307,8 @@ $bg-gray: #f5f5f5;
                     .oph-pinned {
                         flex-basis: 5%;
 
-                        img {
-                            width: 18px;
-                            height: 18px;
+                        svg {
+                            transform: scale(0.85);
                         }
                     }
                 }
@@ -245,10 +321,7 @@ $bg-gray: #f5f5f5;
                     background: $bg-gray;
 
                     .opc-img {
-                        padding: 5px;
-                        border-radius: 50%;
-                        width: 45px;
-                        height: 45px;
+                        @extend %avatar-img;
 
                         img {
                             width: 100%;
@@ -263,10 +336,6 @@ $bg-gray: #f5f5f5;
                         input {
                             border-right: none;
 
-
-                            &:hover {
-
-                            }
                             &:focus {
                                 border: 1px solid $green;
                             }
@@ -276,6 +345,13 @@ $bg-gray: #f5f5f5;
                                 background: #fff;
                                 border: 1px solid #ced4da;
                                 border-left: none;
+
+                                &:hover {
+                                    svg circle {
+                                        fill: $green;
+                                        transition: all 130ms ease-in-out;
+                                    }
+                                }
                             }
                         }
                     }
@@ -289,11 +365,7 @@ $bg-gray: #f5f5f5;
                     align-items: center;
 
                     .ueh-img {
-                        padding: 10px;
-                        background: #f5f5f5;
-                        border-radius: 50%;
-                        width: 45px;
-                        height: 45px;
+                        @extend %avatar-img;
                         border: 1px solid #41bb72;
 
                         img {
@@ -320,9 +392,9 @@ $bg-gray: #f5f5f5;
             }
         }
         .dashboard-right {
-            -ms-flex: 0 0 30.33333333%;
-            flex: 0 0 30.33333333%;
-            max-width: 30.33333333%;
+            -ms-flex: 0 0 29.33333333%;
+            flex: 0 0 29.33333333%;
+            max-width: 29.33333333%;
 
             // Sidebar Financial Statement
             .sidebar-financial-statement {
@@ -353,46 +425,81 @@ $bg-gray: #f5f5f5;
                     .sfsm-more {
                         display: flex;
                         justify-content: center;
+                        align-items: center;
                     }
                 }
             }
             .sidebar-building-details {
-                .sbd-owner {
-                    display: flex;
-                    flex-flow: row wrap;
+                .card-body {
+                    position: relative;
 
-                    .sbdo-image {
-                        img {
-                            background: $light-gray;
-                            height: 60px;
-                            width: 60px;
-                            border-radius: 50%;
-                        }
-                    }
-                    .sbdo-details {
-                        display: flex;
-                        flex-flow: column wrap;
-                        justify-content: center;
-                        align-content: center;
-                        flex: 1;
-                    }
-                }
-                .sbd-info {
-                    border-bottom: 1px solid $light-gray;
-
-                    .sbdi-items {
+                    .sbd-owner {
                         display: flex;
                         flex-flow: row wrap;
-
-                        .sbdii-label {
+    
+                        &::before {
+                            content: '';
+                            background: $bg-gray;
+                            position: absolute;
+                            top: 0;
+                            left: 45px;
+                            right: 0;
+                            height: 60px;
+                            margin: 1.25rem 1.25rem 0 1.25rem;
+                            z-index: 1;
+                            border-radius: 15px;
+                        }
+    
+                        .sbdo-image {
                             flex-basis: 90px;
                             display: flex;
-                            justify-content: flex-start;
-                            align-items: flex-start;
+                            justify-content: center;
+                            position: relative;
+                            z-index: 2;
+    
+                            img {
+                                background: $light-gray;
+                                height: 60px;
+                                width: 60px;
+                                border-radius: 50%;
+                            }
                         }
-                        .sbdii-value {
+                        .sbdo-details {
+                            display: flex;
+                            flex-flow: column wrap;
+                            justify-content: center;
+                            align-content: center;
                             flex: 1;
+                            position: relative;
+                            z-index: 2;
+
+                            .sbdod-position {
+                                color: $green;
+                            }
                         }
+                    }
+                    .sbd-info {
+                        border-bottom: 1px solid $light-gray;
+    
+                        .sbdi-items {
+                            display: flex;
+                            flex-flow: row wrap;
+    
+                            .sbdii-label {
+                                flex-basis: 90px;
+                                display: flex;
+                                justify-content: flex-start;
+                                align-items: flex-start;
+                            }
+                            .sbdii-value {
+                                flex: 1;
+                            }
+                        }
+                    }
+                    .sbd-more {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                     }
                 }
             }
