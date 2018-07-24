@@ -330,11 +330,22 @@ $bg-gray: #f5f5f5;
 
             @include media-breakpoint-down(sm) {
                 .dashboard-tabs {
-                    a {
-                        font-weight: 500;
-                    }
-                    .active {
-                        color: $green !important;
+                    display: flex;
+                    flex-flow: row nowrap;
+
+                    .nav-item {
+                        display: flex;
+
+                        a.nav-link {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            font-weight: 500;
+
+                            &.active {
+                                color: $green !important;
+                            }
+                        }
                     }
                 }
             }
