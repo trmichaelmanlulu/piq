@@ -1,60 +1,100 @@
+link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.1.1/css/all.css', integrity='sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ', crossorigin='anonymous')
+
 // Header
 nav.main-header.navbar.navbar-expand-md
 	.container
-		.navbar-left.navbar-collapse.collapse.w-100.order-1.order-md-0.dual-collapse2
+		.navbar-left.navbar-collapse.w-100.order-0.dual-collapse2
 			a.navbar-brand(href="javascript:void(0);")
 				a.nav-link(href="javascript:void(0);", (click)="toggleMyBuildings()")
 					img(src='../../assets/header/piq-brand-logo.svg', alt='PIQ Brand Logo')
-					.my-buildings.dropdown-menu(aria-labelledby='navbarDropdownMenuLink', [ngClass]="{'show': showMyBuildings}")
-						h5.pb-2 My buildings
-						a.mb-items.dropdown-item(href='#')
-							.mbi-img.mr-2
-								img(src="../../assets/header/my-buildings/building-1.png", alt="Hornsby Building")
-							.mbi-details
-								p.mbid-name.m-0 Hornsby Building
-								p.mbid-address.m-0.text-black-50 Jersey Lane, Hornsby NSW. 2077
-						a.mb-items.dropdown-item(href='#')
-							.mbi-img.mr-2
-								img(src="../../assets/header/my-buildings/building-2.png", alt="St Leonards Residence")
-							.mbi-details
-								p.mbid-name.m-0 St Leonards Residence
-								p.mbid-address.m-0.text-black-50 J3 Westbourne St. St Leonards NSW. 2065
-						a.mb-items.dropdown-item(href='#')
-							.mbi-img.mr-2
-								img(src="../../assets/header/my-buildings/building-3.png", alt="Artarmon Building")
-							.mbi-details
-								p.mbid-name.m-0 Artarmon Building
-								p.mbid-address.m-0.text-black-50 118 Artarmon Rd. Artarmon NSW. 2064
-						a.mb-items.dropdown-item(href='#')
-							.mbi-img.mr-2
-								img(src="../../assets/header/my-buildings/building-4.png", alt="St Leonards Residence")
-							.mbi-details
-								p.mbid-name.m-0 Newtown Complex
-								p.mbid-address.m-0.text-black-50 32-72 Alice St. Newtown NSW. 2042
-						a.mb-items.dropdown-item(href='#')
-							.mbi-img.mr-2
-								img(src="../../assets/header/my-buildings/building-5.png", alt="St Leonards Residence")
-							.mbi-details
-								p.mbid-name.m-0 Glebe Building
-								p.mbid-address.m-0.text-black-50 296 Glebe Point Rd. Glebe NSW. 2037
 		|
-		.navbar-center.mx-auto.order-0
+		.navbar-center.mx-auto.order-2
 			a.navbar-brand.mx-auto(href='#') 
 				img(src='../../assets/header/piq-logo.png', alt='PIQ Logo')
 		|
-		.navbar-right.navbar-collapse.collapse.w-100.order-3.dual-collapse2
-			ul.navbar-nav.ml-auto
+		.navbar-right.navbar-collapse.w-100.order-3.dual-collapse2
+			ul.navbar-nav.ml-auto.d-none.d-md-block.d-lg-block
 				li.nav-item
 					a.nav-link(href='#')
 						| John Smith
 						img(src='../../assets/shared/avatar.png', alt='User avatar')
+			// Burger Menu Button
+			button.d-xs-block.d-sm-block.d-block.d-md-none.d-lg-none.navbar-toggler(type='button', (click)="toggleMenu()", data-toggle='collapse', data-target='.mobile-menu', aria-expanded='false', aria-label='Toggle navigation')
+				span.navbar-toggler-icon
+					i.fas.fa-bars
+		|
+		// Header Dropdowns
+		.my-buildings.dropdown-menu([ngClass]="{'show': showMyBuildings}")
+			h5.pb-2 My buildings
+			.mbi-container
+				a.mb-items.dropdown-item.active(href='#')
+					.mbi-img.mr-2
+						img(src="../../assets/header/my-buildings/building-1.png", alt="Hornsby Building")
+					.mbi-details
+						p.mbid-name.m-0 Hornsby Building
+						p.mbid-address.m-0.text-black-50 Jersey Lane, Hornsby NSW. 2077
+				a.mb-items.dropdown-item(href='#')
+					.mbi-img.mr-2
+						img(src="../../assets/header/my-buildings/building-2.png", alt="St Leonards Residence")
+					.mbi-details
+						p.mbid-name.m-0 St Leonards Residence
+						p.mbid-address.m-0.text-black-50 J3 Westbourne St. St Leonards NSW. 2065
+				a.mb-items.dropdown-item(href='#')
+					.mbi-img.mr-2
+						img(src="../../assets/header/my-buildings/building-3.png", alt="Artarmon Building")
+					.mbi-details
+						p.mbid-name.m-0 Artarmon Building
+						p.mbid-address.m-0.text-black-50 118 Artarmon Rd. Artarmon NSW. 2064
+				a.mb-items.dropdown-item(href='#')
+					.mbi-img.mr-2
+						img(src="../../assets/header/my-buildings/building-4.png", alt="St Leonards Residence")
+					.mbi-details
+						p.mbid-name.m-0 Newtown Complex
+						p.mbid-address.m-0.text-black-50 32-72 Alice St. Newtown NSW. 2042
+				a.mb-items.dropdown-item(href='#')
+					.mbi-img.mr-2
+						img(src="../../assets/header/my-buildings/building-5.png", alt="St Leonards Residence")
+					.mbi-details
+						p.mbid-name.m-0 Glebe Building
+						p.mbid-address.m-0.text-black-50 296 Glebe Point Rd. Glebe NSW. 2037
+		|
+		.mobile-menu.collapse.navbar-collapse.d-md-none.d-lg-none([ngClass]="{'show': showMenu}")
+			ul.navbar-nav
+				li.nav-item.active
+					a.nav-link.text-dark(href='#')
+						img.mr-3(src="../../assets/icons/newsfeed-icon.svg", alt="Dashboard")
+						| Dashboard
+				li.nav-item
+					a.nav-link.text-dark(href='#')
+						img.mr-3(src="../../assets/icons/financial-icon.svg", alt="Financial")
+						| Financial
+				li.nav-item
+					a.nav-link.text-dark(href='#')
+						img.mr-3(src="../../assets/icons/levies-icon.svg", alt="Levies")
+						| Levies
+				li.nav-item
+					a.nav-link.text-dark(href='#')
+						img.mr-3(src="../../assets/icons/open-items-icon.svg", alt="Open Items")
+						| Open Items
+				li.nav-item
+					a.nav-link.text-dark(href='#')
+						img.mr-3(src="../../assets/icons/manager-info-icon.svg", alt="Manager Info")
+						| Manager Info
+				li.nav-item
+					a.nav-link.text-dark(href='#')
+						img.mr-3(src="../../assets/icons/calendar-icon.svg", alt="Calendar")
+						| Calendar
+				li.nav-item
+					a.nav-link.text-dark(href='#')
+						img.mr-3(src="../../assets/icons/faqs-icon.svg", alt="Bylaws/FAQs")
+						| Bylaws / FAQs
 |
 // Body
 .main-body
 	.container
 		.row
 			// Left sidebar
-			.col-md-3.dashboard-left
+			.col-md-3.dashboard-left.d-none.d-md-block.d-lg-block
 				// Sidebar Building
 				.card.card-item.sidebar-building
 					.card-body
@@ -109,173 +149,255 @@ nav.main-header.navbar.navbar-expand-md
 
 						
 				|
-				// Levy Balance
-				.card.card-item.levy-balance
-					.card-body
-						.lb-top.p-4.mb-3
-							.lbt-left.text-center
-								img.mr-2(src="../../assets/icons/levy-balance-icon.svg", alt="Levy balance")
-								p.m-0.font-weight-bold Levy Balance
-							.lbt-right.text-right
-								h4.m-0 $ 18,250.00 DR
-						.lb-bottom
-							a.lbb-items.card-link.pt-3.pb-1.text-center(href="")
-								svg.mr-2(xmlns='http://www.w3.org/2000/svg', width='16', height='16', viewbox='0 0 16 16')
-									title View statements
-									g.nc-icon-wrapper(stroke-width='1', fill='#666666', stroke='#666666')
-										path(fill='none', stroke='#666666', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', d='M0.5,8 c0,0,3-5.5,7.5-5.5S15.5,8,15.5,8s-3,5.5-7.5,5.5S0.5,8,0.5,8z')
-										circle(data-color='color-2', fill='none', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', cx='8', cy='8', r='2.5')
-								|
-								p.m-0 View Statements
-							a.lbb-items.card-link.pt-3.pb-1.text-center(href="")
-								svg.mr-2(xmlns='http://www.w3.org/2000/svg', width='16', height='16', viewbox='0 0 16 16')
-									title Pay now
-									g.nc-icon-wrapper(stroke-width='1', fill='#666666', stroke='#666666')
-										path(d='M13.5.5H2.5a1,1,0,0,0-1,1v14l2.5-2,2,2,2-2,2,2,2-2,2.5,2V1.5A1,1,0,0,0,13.5.5Z', fill='none', stroke='#666666', stroke-linecap='round', stroke-linejoin='round')
-										line(x1='4.5', y1='9.5', x2='7.5', y2='9.5', fill='none', stroke-linecap='round', stroke-linejoin='round', data-color='color-2')
-										circle(cx='8', cy='5', r='1.5', fill='none', stroke-linecap='round', stroke-linejoin='round', data-color='color-2')
-										line(x1='11.5', y1='9.5', x2='10.5', y2='9.5', fill='none', stroke-linecap='round', stroke-linejoin='round', data-color='color-2')
-								|
-								p.m-0 Pay Now
-							a.lbb-items.card-link.pt-3.pb-1.text-center(href="")
-								svg.mr-2(xmlns='http://www.w3.org/2000/svg', width='16', height='16', viewbox='0 0 16 16')
-									title Levy history
-									g.nc-icon-wrapper(stroke-width='1', fill='#666666', stroke='#666666')
-										path(d='M12.5,1.5h1a1,1,0,0,1,1,1v12a1,1,0,0,1-1,1H2.5a1,1,0,0,1-1-1V2.5a1,1,0,0,1,1-1h1', fill='none', stroke='#666666', stroke-linecap='round', stroke-linejoin='round', data-cap='butt')
-										rect(x='5.5', y='0.5', width='5', height='2', fill='none', stroke='#666666', stroke-linecap='round', stroke-linejoin='round', data-cap='butt')
-										polyline(points='5 9 7 11 11 7', fill='none', stroke-linecap='round', stroke-linejoin='round', data-cap='butt', data-color='color-2')
-								|
-								p.m-0 Levy History
+				ul.dashboard-tabs.nav.nav-tabs.d-md-none.d-lg-none(role='tablist')
+					li.nav-item
+						a.dt-n-tab.text-black-50.nav-link.active(data-toggle='tab', href='#n', role='tab', aria-selected='true') Newsfeed
+					li.nav-item
+						a.dt-fs-tab.text-black-50.nav-link(data-toggle='tab', href='#', role='tab', aria-selected='false') Financial Statement
+					li.nav-item
+						a.dt-sm-tab.text-black-50.nav-link(data-toggle='tab', href='#', role='tab', aria-selected='false') Strata Manager
 				|
-				// Open item
-				.card.card-item.open-item
-					.card-body
-						.oi-block.oi-left.mr-3
-							.oib-img
-								img(src="../../assets/icons/open-updated.svg", alt="Open item updated")
-						.oi-block.oi-center
-							.oib-block.p-3.text-center
-								h6.m-0 Open item updated
-						.oi-block.oi-right.ml-3
-							a.card-link(href="")
-								svg(xmlns='http://www.w3.org/2000/svg', width='24', height='24', viewbox='0 0 24 24')
-									title View item updated
-									g.nc-icon-wrapper(stroke-linecap='square', stroke-linejoin='miter', stroke-width='2', fill='#666666', stroke='#666666')
-										polyline(data-cap='butt', fill='none', stroke='#666666', stroke-miterlimit='10', points='8,1 16,12 8,23 ', stroke-linecap='butt')
-				|
-				// Owner Post
-				.card.card-item.owner-post
-					.card-body
-						.op-header.mb-3
-							.oph-img
-								img(src="../../assets/icons/user-icon.svg", alt="User icon")
-							.oph-center.px-3
-								.ophc-top
-									a.ophc-name.card-link.m-0.mr-2(href="")
-										strong Jake Smith
-									p.m-0.text-black-50.font-weight-bold Owner
-								.ophc-bottom
-									p.m-0.text-black-50 2 hrs
-							.oph-pinned
-								a.card-link(href="")
-									svg(xmlns='http://www.w3.org/2000/svg', width='24', height='24', viewbox='0 0 24 24')
-										title Pinned post
-										g.nc-icon-wrapper(stroke-linecap='square', stroke-linejoin='miter', stroke-width='2', fill='#999999', stroke='#999999')
-											line(data-cap='butt', fill='none', stroke='#999999', stroke-miterlimit='10', x1='4.008', y1='11.008', x2='16.844', y2='3.844', stroke-linecap='butt')
-											line(data-cap='butt', fill='none', stroke='#999999', stroke-miterlimit='10', x1='12.992', y1='19.992', x2='20.156', y2='7.156', stroke-linecap='butt')
-											line(fill='none', stroke='#999999', stroke-miterlimit='10', x1='15', y1='2', x2='22', y2='9')
-											line(data-color='color-2', fill='none', stroke-miterlimit='10', x1='8.5', y1='15.5', x2='2', y2='22')
-											line(fill='none', stroke='#999999', stroke-miterlimit='10', x1='2', y1='9', x2='15', y2='22')
+				#dashboardTabContent.tab-content
+					.dtc-n-content.tab-pane.fade.show.active(role='tabpanel')
+						// Levy Balance
+						.card.card-item.levy-balance
+							.card-body
+								.lb-top.p-4.mb-3
+									.lbt-left.text-center
+										img.mr-2(src="../../assets/icons/levy-balance-icon.svg", alt="Levy balance")
+										p.m-0.font-weight-bold Levy Balance
+									.lbt-right.text-right
+										h4.m-0 $ 18,250.00 DR
+								.lb-bottom
+									a.lbb-items.card-link.pt-3.pb-1.text-center(href="")
+										svg.mr-2(xmlns='http://www.w3.org/2000/svg', width='16', height='16', viewbox='0 0 16 16')
+											title View statements
+											g.nc-icon-wrapper(stroke-width='1', fill='#666666', stroke='#666666')
+												path(fill='none', stroke='#666666', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', d='M0.5,8 c0,0,3-5.5,7.5-5.5S15.5,8,15.5,8s-3,5.5-7.5,5.5S0.5,8,0.5,8z')
+												circle(data-color='color-2', fill='none', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', cx='8', cy='8', r='2.5')
+										|
+										p.m-0 View Statements
+									a.lbb-items.card-link.pt-3.pb-1.text-center(href="")
+										svg.mr-2(xmlns='http://www.w3.org/2000/svg', width='16', height='16', viewbox='0 0 16 16')
+											title Pay now
+											g.nc-icon-wrapper(stroke-width='1', fill='#666666', stroke='#666666')
+												path(d='M13.5.5H2.5a1,1,0,0,0-1,1v14l2.5-2,2,2,2-2,2,2,2-2,2.5,2V1.5A1,1,0,0,0,13.5.5Z', fill='none', stroke='#666666', stroke-linecap='round', stroke-linejoin='round')
+												line(x1='4.5', y1='9.5', x2='7.5', y2='9.5', fill='none', stroke-linecap='round', stroke-linejoin='round', data-color='color-2')
+												circle(cx='8', cy='5', r='1.5', fill='none', stroke-linecap='round', stroke-linejoin='round', data-color='color-2')
+												line(x1='11.5', y1='9.5', x2='10.5', y2='9.5', fill='none', stroke-linecap='round', stroke-linejoin='round', data-color='color-2')
+										|
+										p.m-0 Pay Now
+									a.lbb-items.card-link.pt-3.pb-1.text-center(href="")
+										svg.mr-2(xmlns='http://www.w3.org/2000/svg', width='16', height='16', viewbox='0 0 16 16')
+											title Levy history
+											g.nc-icon-wrapper(stroke-width='1', fill='#666666', stroke='#666666')
+												path(d='M12.5,1.5h1a1,1,0,0,1,1,1v12a1,1,0,0,1-1,1H2.5a1,1,0,0,1-1-1V2.5a1,1,0,0,1,1-1h1', fill='none', stroke='#666666', stroke-linecap='round', stroke-linejoin='round', data-cap='butt')
+												rect(x='5.5', y='0.5', width='5', height='2', fill='none', stroke='#666666', stroke-linecap='round', stroke-linejoin='round', data-cap='butt')
+												polyline(points='5 9 7 11 11 7', fill='none', stroke-linecap='round', stroke-linejoin='round', data-cap='butt', data-color='color-2')
+										|
+										p.m-0 Levy History
 						|
-						.op-body.py-2
-							p.m-0.px-2.text-justify Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh orci, finibus eget rutrum eu, imperdiet et urna. Duis pulvinar eros eget blandit vulputate. Nullam mattis urna lacus. Morbi vitae sodales nibh. Morbi in blandit est. Suspendisse in libero ipsum. Donec dui urna, condimentum a augue a, dictum egestas metus.
-					.card-footer
-						.op-comment
-							.opc-img.mr-2
-								img(src="../../assets/shared/avatar.png", alt="User avatar")
-							.opc-input-block
-								.input-group
-									input.form-control(type='text', placeholder="Write a comment..", aria-label="Recipient's username", aria-describedby='button-addon2')
-									.input-group-append
-										button#button-addon2.btn.btn-outline-secondary(type='button')
-											svg(xmlns='http://www.w3.org/2000/svg', width='16', height='16', viewbox='0 0 16 16')
-												title Upload image
-												g.nc-icon-wrapper(stroke-width='1', fill='#666666', stroke='#666666')
-													rect(x='1.5', y='3.5', width='13', height='11', fill='none', stroke='#666666', stroke-linecap='round', stroke-linejoin='round')
-													line(x1='4.5', y1='0.5', x2='11.5', y2='0.5', fill='none', stroke-linecap='round', stroke-linejoin='round', data-color='color-2')
-													polygon(points='3.5 12.5 9.5 7.5 12.5 12.5 3.5 12.5', fill='none', stroke-linecap='round', stroke-linejoin='round', data-color='color-2')
-													circle(cx='5', cy='7', r='1', data-cap='butt', data-color='color-2', data-stroke='none', stroke='none')
-							|
-				|
-				// Upcoming Events
-				.card.card-item.upcoming-events
-					.card-body
-						.ue-header.mb-3
-							.ueh-img.mr-3
-								img(src="../../assets/icons/upcoming-meetings-icon.svg", alt="Upcoming meeting")
-							.ueh-block.pl-4.pr-3.py-3
-								h6.m-0 Upcoming meeting
-								a.card-link(href='')
-									svg(xmlns='http://www.w3.org/2000/svg', width='24', height='24', viewbox='0 0 24 24')
-										title View upcoming meeting
-										g.nc-icon-wrapper(stroke-linecap='square', stroke-linejoin='miter', stroke-width='2', fill='#666666', stroke='#666666')
-											polyline(data-cap='butt', fill='none', stroke='#666666', stroke-miterlimit='10', points='8,1 16,12 8,23 ', stroke-linecap='butt')
-						.ue-details.pb-2
-							h5 Committee meeting
-							.ued-info
-								img.mr-2(src="../../assets/icons/clock-icon.svg", alt="Meeting date and time")
-								p.m-0.text-black-50 14 Jul · 2:45 pm to 3:45 pm
-							.ued-info
-								img.mr-2(src="../../assets/icons/location-icon.svg", alt="Meeting location")
-								p.m-0.text-black-50 St Leonards, NSW
-				|
-				// Owner Post
-				.card.card-item.owner-post
-					.card-body
-						.op-header.mb-3
-							.oph-img
-								img(src="../../assets/icons/user-icon.svg", alt="User icon")
-							.oph-center.px-3
-								.ophc-top
-									a.ophc-name.card-link.m-0.mr-2(href="")
-										strong Maddy O'Brien
-									p.m-0.text-black-50.font-weight-bold Owner
-								.ophc-bottom
-									p.m-0.text-black-50 5 hrs
-							.oph-pinned
-								a.card-link(href="")
-									svg(xmlns='http://www.w3.org/2000/svg', width='24', height='24', viewbox='0 0 24 24')
-										title Pinned post
-										g.nc-icon-wrapper(stroke-linecap='square', stroke-linejoin='miter', stroke-width='2', fill='#999999', stroke='#999999')
-											line(data-cap='butt', fill='none', stroke='#999999', stroke-miterlimit='10', x1='4.008', y1='11.008', x2='16.844', y2='3.844', stroke-linecap='butt')
-											line(data-cap='butt', fill='none', stroke='#999999', stroke-miterlimit='10', x1='12.992', y1='19.992', x2='20.156', y2='7.156', stroke-linecap='butt')
-											line(fill='none', stroke='#999999', stroke-miterlimit='10', x1='15', y1='2', x2='22', y2='9')
-											line(data-color='color-2', fill='none', stroke-miterlimit='10', x1='8.5', y1='15.5', x2='2', y2='22')
-											line(fill='none', stroke='#999999', stroke-miterlimit='10', x1='2', y1='9', x2='15', y2='22')
-							|
-						.op-body.py-2
-							p.m-0.px-2.text-justify Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh orci, finibus eget rutrum eu, imperdiet et urna. Duis pulvinar eros eget blandit vulputate. Nullam mattis urna lacus. Morbi vitae sodales nibh. Morbi in blandit est. Suspendisse in libero ipsum. Donec dui urna, condimentum a augue a, dictum egestas metus.
-					.card-footer
-						.op-comment
-							.opc-img.mr-2
-								img(src="../../assets/shared/avatar.png", alt="User avatar")
-							.opc-input-block
-								.input-group
-									input.form-control(type='text', placeholder="Write a comment..", aria-label="Recipient's username", aria-describedby='button-addon2')
-									.input-group-append
-										button#button-addon2.btn.btn-outline-secondary(type='button')
-											svg(xmlns='http://www.w3.org/2000/svg', width='16', height='16', viewbox='0 0 16 16')
-												title Upload image
-												g.nc-icon-wrapper(stroke-width='1', fill='#666666', stroke='#666666')
-													rect(x='1.5', y='3.5', width='13', height='11', fill='none', stroke='#666666', stroke-linecap='round', stroke-linejoin='round')
-													line(x1='4.5', y1='0.5', x2='11.5', y2='0.5', fill='none', stroke-linecap='round', stroke-linejoin='round', data-color='color-2')
-													polygon(points='3.5 12.5 9.5 7.5 12.5 12.5 3.5 12.5', fill='none', stroke-linecap='round', stroke-linejoin='round', data-color='color-2')
-													circle(cx='5', cy='7', r='1', data-cap='butt', data-color='color-2', data-stroke='none', stroke='none')
-							|
-				|
+						// Open item
+						.card.card-item.open-item
+							.card-body
+								.oi-block.oi-left.mr-3
+									.oib-img
+										img(src="../../assets/icons/open-updated.svg", alt="Open item updated")
+								.oi-block.oi-center
+									.oib-block.p-3.text-center
+										h6.m-0 Open item updated
+								.oi-block.oi-right.ml-3
+									a.card-link(href="")
+										svg(xmlns='http://www.w3.org/2000/svg', width='24', height='24', viewbox='0 0 24 24')
+											title View item updated
+											g.nc-icon-wrapper(stroke-linecap='square', stroke-linejoin='miter', stroke-width='2', fill='#666666', stroke='#666666')
+												polyline(data-cap='butt', fill='none', stroke='#666666', stroke-miterlimit='10', points='8,1 16,12 8,23 ', stroke-linecap='butt')
+						|
+						// Owner Post
+						.card.card-item.owner-post
+							.card-body
+								.op-header.mb-3
+									.oph-img
+										img(src="../../assets/icons/user-icon.svg", alt="User icon")
+									.oph-center.px-3
+										.ophc-top
+											a.ophc-name.card-link.m-0.mr-2(href="")
+												strong Jake Smith
+											p.m-0.text-black-50.font-weight-bold Owner
+										.ophc-bottom
+											p.m-0.text-black-50 2 hrs
+									.oph-pinned
+										a.card-link(href="")
+											svg(xmlns='http://www.w3.org/2000/svg', width='24', height='24', viewbox='0 0 24 24')
+												title Pinned post
+												g.nc-icon-wrapper(stroke-linecap='square', stroke-linejoin='miter', stroke-width='2', fill='#999999', stroke='#999999')
+													line(data-cap='butt', fill='none', stroke='#999999', stroke-miterlimit='10', x1='4.008', y1='11.008', x2='16.844', y2='3.844', stroke-linecap='butt')
+													line(data-cap='butt', fill='none', stroke='#999999', stroke-miterlimit='10', x1='12.992', y1='19.992', x2='20.156', y2='7.156', stroke-linecap='butt')
+													line(fill='none', stroke='#999999', stroke-miterlimit='10', x1='15', y1='2', x2='22', y2='9')
+													line(data-color='color-2', fill='none', stroke-miterlimit='10', x1='8.5', y1='15.5', x2='2', y2='22')
+													line(fill='none', stroke='#999999', stroke-miterlimit='10', x1='2', y1='9', x2='15', y2='22')
+								|
+								.op-body.py-2
+									p.m-0.px-2.text-justify Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh orci, finibus eget rutrum eu, imperdiet et urna. Duis pulvinar eros eget blandit vulputate. Nullam mattis urna lacus. Morbi vitae sodales nibh. Morbi in blandit est. Suspendisse in libero ipsum. Donec dui urna, condimentum a augue a, dictum egestas metus.
+							.card-footer
+								.op-comment
+									.opc-img.mr-2
+										img(src="../../assets/shared/avatar.png", alt="User avatar")
+									.opc-input-block
+										.input-group
+											input.form-control(type='text', placeholder="Write a comment..", aria-label="Recipient's username", aria-describedby='button-addon2')
+											.input-group-append
+												button#button-addon2.btn.btn-outline-secondary(type='button')
+													svg(xmlns='http://www.w3.org/2000/svg', width='16', height='16', viewbox='0 0 16 16')
+														title Upload image
+														g.nc-icon-wrapper(stroke-width='1', fill='#666666', stroke='#666666')
+															rect(x='1.5', y='3.5', width='13', height='11', fill='none', stroke='#666666', stroke-linecap='round', stroke-linejoin='round')
+															line(x1='4.5', y1='0.5', x2='11.5', y2='0.5', fill='none', stroke-linecap='round', stroke-linejoin='round', data-color='color-2')
+															polygon(points='3.5 12.5 9.5 7.5 12.5 12.5 3.5 12.5', fill='none', stroke-linecap='round', stroke-linejoin='round', data-color='color-2')
+															circle(cx='5', cy='7', r='1', data-cap='butt', data-color='color-2', data-stroke='none', stroke='none')
+									|
+						|
+						// Upcoming Events
+						.card.card-item.upcoming-events
+							.card-body
+								.ue-header.mb-3
+									.ueh-img.mr-3
+										img(src="../../assets/icons/upcoming-meetings-icon.svg", alt="Upcoming meeting")
+									.ueh-block.pl-4.pr-3.py-3
+										h6.m-0 Upcoming meeting
+										a.card-link(href='')
+											svg(xmlns='http://www.w3.org/2000/svg', width='24', height='24', viewbox='0 0 24 24')
+												title View upcoming meeting
+												g.nc-icon-wrapper(stroke-linecap='square', stroke-linejoin='miter', stroke-width='2', fill='#666666', stroke='#666666')
+													polyline(data-cap='butt', fill='none', stroke='#666666', stroke-miterlimit='10', points='8,1 16,12 8,23 ', stroke-linecap='butt')
+								.ue-details.pb-2
+									h5 Committee meeting
+									.ued-info.mb-1
+										img.mr-2(src="../../assets/icons/clock-icon.svg", alt="Meeting date and time")
+										p.m-0.text-black-50 14 Jul · 2:45 pm to 3:45 pm
+									.ued-info.mb-1
+										img.mr-2(src="../../assets/icons/location-icon.svg", alt="Meeting location")
+										p.m-0.text-black-50 St Leonards, NSW
+						|
+						// Owner Post
+						.card.card-item.owner-post
+							.card-body
+								.op-header.mb-3
+									.oph-img
+										img(src="../../assets/icons/user-icon.svg", alt="User icon")
+									.oph-center.px-3
+										.ophc-top
+											a.ophc-name.card-link.m-0.mr-2(href="")
+												strong Maddy O'Brien
+											p.m-0.text-black-50.font-weight-bold Owner
+										.ophc-bottom
+											p.m-0.text-black-50 5 hrs
+									.oph-pinned
+										a.card-link(href="")
+											svg(xmlns='http://www.w3.org/2000/svg', width='24', height='24', viewbox='0 0 24 24')
+												title Pinned post
+												g.nc-icon-wrapper(stroke-linecap='square', stroke-linejoin='miter', stroke-width='2', fill='#999999', stroke='#999999')
+													line(data-cap='butt', fill='none', stroke='#999999', stroke-miterlimit='10', x1='4.008', y1='11.008', x2='16.844', y2='3.844', stroke-linecap='butt')
+													line(data-cap='butt', fill='none', stroke='#999999', stroke-miterlimit='10', x1='12.992', y1='19.992', x2='20.156', y2='7.156', stroke-linecap='butt')
+													line(fill='none', stroke='#999999', stroke-miterlimit='10', x1='15', y1='2', x2='22', y2='9')
+													line(data-color='color-2', fill='none', stroke-miterlimit='10', x1='8.5', y1='15.5', x2='2', y2='22')
+													line(fill='none', stroke='#999999', stroke-miterlimit='10', x1='2', y1='9', x2='15', y2='22')
+									|
+								.op-body.py-2
+									p.m-0.px-2.text-justify Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh orci, finibus eget rutrum eu, imperdiet et urna. Duis pulvinar eros eget blandit vulputate. Nullam mattis urna lacus. Morbi vitae sodales nibh. Morbi in blandit est. Suspendisse in libero ipsum. Donec dui urna, condimentum a augue a, dictum egestas metus.
+							.card-footer
+								.op-comment
+									.opc-img.mr-2
+										img(src="../../assets/shared/avatar.png", alt="User avatar")
+									.opc-input-block
+										.input-group
+											input.form-control(type='text', placeholder="Write a comment..", aria-label="Recipient's username", aria-describedby='button-addon2')
+											.input-group-append
+												button#button-addon2.btn.btn-outline-secondary(type='button')
+													svg(xmlns='http://www.w3.org/2000/svg', width='16', height='16', viewbox='0 0 16 16')
+														title Upload image
+														g.nc-icon-wrapper(stroke-width='1', fill='#666666', stroke='#666666')
+															rect(x='1.5', y='3.5', width='13', height='11', fill='none', stroke='#666666', stroke-linecap='round', stroke-linejoin='round')
+															line(x1='4.5', y1='0.5', x2='11.5', y2='0.5', fill='none', stroke-linecap='round', stroke-linejoin='round', data-color='color-2')
+															polygon(points='3.5 12.5 9.5 7.5 12.5 12.5 3.5 12.5', fill='none', stroke-linecap='round', stroke-linejoin='round', data-color='color-2')
+															circle(cx='5', cy='7', r='1', data-cap='butt', data-color='color-2', data-stroke='none', stroke='none')
+									|
+						|
+					|
+					.dtc-fs-content.tab-pane.fade(role='tabpanel')
+						// Sidebar Financial Statement
+						.card.card-item.sidebar-financial-statement
+							.card-header
+								img.mr-3(src="../../assets/icons/financial-statement-icon.svg", alt="Financial statement")
+								h6.card-title.text-center.my-2.text-light Financial Statement
+							.card-body
+								.sfs-graph.mb-2
+									img.w-100(src="../../assets/dashboard/graph.png", alt="Graph")
+								.sfs-details.pb-3
+									.sfsd-circle.mr-2
+									.sfsd-ellipse
+								.sfs-more.text-center.pt-3
+									a.sfsm-more.card-link(href="")
+										svg.mr-2(xmlns='http://www.w3.org/2000/svg', width='16', height='16', viewbox='0 0 16 16')
+											title Show more
+											g.nc-icon-wrapper(stroke-width='1', fill='#666666', stroke='#666666')
+												path(fill='none', stroke='#666666', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', d='M0.5,8 c0,0,3-5.5,7.5-5.5S15.5,8,15.5,8s-3,5.5-7.5,5.5S0.5,8,0.5,8z')
+												circle(data-color='color-2', fill='none', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', cx='8', cy='8', r='2.5')
+										| Show more
+						|
+					|
+					.dtc-sm-content.tab-pane.fade(role='tabpanel')
+						// Sidebar Building Details
+						.card.card-item.sidebar-building-details
+							.card-body
+								.sbd-owner.pb-2
+									.sbdo-image
+										img.mr-2(src="../../assets/dashboard/building-owner.png", alt="Building owner")
+									.sbdo-details.px-2
+										h6.sbdod-name.card-text.m-0.font-weight-bold Melissa Brown
+										p.sbdod-position.card-text.m-0 Manager
+								.sbd-info.mt-4.pb-3
+									.sbdi-items
+										.sbdii-label.mr-2
+											img.mr-2(src="../../assets/icons/building-icon.svg", alt="Company name")
+											p Company
+										.sbdii-value
+											p.text-black-50 BC4U Management Pty LTD
+									|
+									.sbdi-items
+										.sbdii-label.mr-2
+											img.mr-2(src="../../assets/icons/location-green-icon.svg", alt="Company address")
+											p Address
+										.sbdii-value
+											p.text-black-50 PO Box 3348, South Brisbane BC QLD - 4101
+									|
+									.sbdi-items
+										.sbdii-label.mr-2
+											img.mr-2(src="../../assets/icons/phone-icon.svg", alt="Company contact")
+											p Phone
+										.sbdii-value
+											p.text-black-50 07 3800 2425
+									|
+									.sbdi-items
+										.sbdii-label.mr-2
+											img.mr-2(src="../../assets/icons/paperclip-icon.svg", alt="Company website")
+											p Website
+										.sbdii-value
+											p.text-black-50 www.bc4u.com.au
+									|
+								.sbd-more.text-center.pt-3
+									a.card-link(href='#')
+										svg.mr-2(xmlns='http://www.w3.org/2000/svg', width='16', height='16', viewbox='0 0 16 16')
+											title Contact
+											g.nc-icon-wrapper(stroke-width='1', fill='#666666', stroke='#666666')
+												polyline(fill='none', stroke='#666666', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', points=' 4.504,9.503 12.5,15.5 15.5,0.5 0.5,6.5 2.502,8.001 ', data-cap='butt')
+												polyline(fill='none', stroke='#666666', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', points=' 7.63,11.848 4.5,15.5 4.504,9.503 9,6.5 ', data-cap='butt')
+										| Contact
+						|
+					|
 			|
 			// Right sidebar
-			.col-md-4.dashboard-right
+			.col-md-4.dashboard-right.d-none.d-md-block.d-lg-block
 				// Sidebar Financial Statement
 				.card.card-item.sidebar-financial-statement
 					.card-header

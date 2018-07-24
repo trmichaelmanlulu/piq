@@ -43,6 +43,9 @@ $darker-gray: rgb(66, 66, 66);
 body {
     background: #ebebeb !important;
 }
+body.unscrollable {
+    overflow: hidden;
+}
 a {
     transition: all 0.1s ease-in-out;
 }
@@ -79,8 +82,26 @@ html {
     font-size: 0.85rem;
 }
   
-@include media-breakpoint-down(md) {
+@include media-breakpoint-only(md) {
     html {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
+    }
+    .main-header {
+        .container {
+            padding: 0 !important;
+        }
+    }
+    .container {
+        max-width: unset !important;
+    }
+}
+@include media-breakpoint-only(sm) {
+    html {
+        font-size: 1rem;
+    }
+}
+@include media-breakpoint-only(xs) {
+    html {
+        font-size: 0.85rem;
     }
 }
